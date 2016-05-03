@@ -5,6 +5,8 @@ public class Mic : MonoBehaviour {
 
     public AudioClip c;
     public string MicName;
+    //private SteamVR_Controller.Device device;
+    //private SteamVR_TrackedObject trackedController;
 
     void Start()
     {
@@ -18,9 +20,14 @@ public class Mic : MonoBehaviour {
         }
     }
 
+    //void Awake()
+    //{
+    //    trackedController = GetComponent<SteamVR_TrackedObject>();
+    //}
+
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.T))
+        if (Input.GetKeyDown(KeyCode.T)/* || device.GetTouchDown(SteamVR_Controller.ButtonMask.Trigger)*/)
         {
             if (Microphone.IsRecording(MicName))
             {
@@ -32,6 +39,12 @@ public class Mic : MonoBehaviour {
             }
         }
 	}
+
+    // setup the vive controller
+    //void FixedUpdate()
+    //{
+    //    device = SteamVR_Controller.Input((int)trackedController.index);
+    //}
 
     void StopRecording()
     {
