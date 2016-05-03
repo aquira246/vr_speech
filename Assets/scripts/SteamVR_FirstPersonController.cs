@@ -146,7 +146,10 @@ public class SteamVR_FirstPersonController : MonoBehaviour
             pointerContactDistance = 0f;
             pointerContactTarget = null;
         }
-
+        if (hasRayHit)
+        {
+            hasRayHit = collidedWith.collider.tag == "Walkable";
+        }
         //check if beam has hit a new target
         if (hasRayHit)
         {
@@ -178,7 +181,7 @@ public class SteamVR_FirstPersonController : MonoBehaviour
     {
         SteamVR_Fade.Start(Color.black, 0);
         SteamVR_Fade.Start(Color.clear, blinkTransitionSpeed);
-        HeadsetCameraRig.position = new Vector3(TeleportLocation.x, HeadsetCameraRigInitialYPosition, TeleportLocation.z);
+        HeadsetCameraRig.position = new Vector3(TeleportLocation.x, TeleportLocation.y + HeadsetCameraRigInitialYPosition, TeleportLocation.z);
     }
 
     void UpdatePointer()
