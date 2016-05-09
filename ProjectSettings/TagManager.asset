@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Walkable
   - Grabbable
+  - Adjustable
   layers:
   - Default
   - TransparentFX

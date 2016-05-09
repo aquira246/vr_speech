@@ -361,6 +361,12 @@ public class SteamVR_FirstPersonController : MonoBehaviour
             }
             canGrabObject = collider.gameObject;
             ToggleGrabbableObjectHighlight(true);
+            if (canGrabObject.GetComponent<Rigidbody>())
+            {
+                canGrabObject.GetComponent<Rigidbody>().useGravity = true;
+                canGrabObject.GetComponent<Rigidbody>().isKinematic = false;
+            }
+
         }
     }
 
