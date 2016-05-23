@@ -346,8 +346,20 @@ public class SteamVR_FirstPersonController : MonoBehaviour
         UpdateGrabbableObjects();
     }
 
+    void UpdateMenu()
+    {
+        if(device.GetTouchDown(SteamVR_Controller.ButtonMask.ApplicationMenu))
+        {
+            UserLightDimmer dimmer = GetComponentInParent<UserLightDimmer>();
+            if(dimmer != null)
+            {
+                dimmer.ToggleLights();
+            }
+        }
+    }
     void Update()
     {
+        UpdateMenu();
         UpdatePointer();
     }
 
