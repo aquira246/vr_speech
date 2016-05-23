@@ -8,6 +8,7 @@ public class Watch : MonoBehaviour {
     // Use this for initialization
 	void Start () {
         StartTime = Time.time;
+        EndTime = Time.time;
 	}
 	
 	// Update is called once per frame
@@ -28,22 +29,30 @@ public class Watch : MonoBehaviour {
         GetComponent<TextMesh>().text = TimeText;
     }
 
-    void StartTimer()
+    public void StartTimer()
     {
         StartTime = Time.time;
         EndTime = StartTime;
+        timerOn = true;
         UpdateTime();
     }
 
-    void StopTimer()
+    public void StopTimer()
     {
         timerOn = false;
         UpdateTime();
     }
 
-    void PauseTimer()
+    public void PauseTimer()
     {
         timerOn = !timerOn;
         UpdateTime();
+    }
+
+    public void ResetTimer()
+    {
+        timerOn = false;
+        StartTime = Time.time;
+        EndTime = StartTime;
     }
 }
